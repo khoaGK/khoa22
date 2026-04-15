@@ -12,17 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-        $table->id();
-        
-        // --- Dán nội dung bảng Users từ sơ đồ vào đây ---
-        $table->string('name', 45);
-        $table->string('username', 45);
-        $table->string('password', 45);
-        $table->integer('role');
-        // -----------------------------------------------
-
-        $table->timestamps();
-    });
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique(); // Dòng này cực kỳ quan trọng
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**

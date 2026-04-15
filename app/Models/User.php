@@ -48,4 +48,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function avatar()
+    {
+        // Một User có một Avatar
+        return $this->hasOne(Avatar::class);
+    }
 }
